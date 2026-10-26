@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PracaTeraz – proste ogłoszenia o pracę: IT, kurier, taksówkarz i wiele innych.">
+  <title>PracaTeraz – oferty pracy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo">Praca<span>Teraz</span></a>
+      <nav class="nav">
+        <a href="#oferty">Oferty</a>
+        <a href="#jak-to-dziala">Jak to działa</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Znajdź pracę, która do Ciebie pasuje</h1>
+        <p>Przeglądaj oferty z różnych branż, wyślij zgłoszenie w minutę i czekaj na odpowiedź.</p>
+        <a href="#oferty" class="btn btn--light">Zobacz oferty</a>
+      </div>
+    </section>
+
+    <section class="section" id="oferty">
+      <div class="container">
+        <h2>Aktualne oferty</h2>
+
+        <div class="filters">
+          <input type="search" id="search" placeholder="Szukaj stanowiska, firmy lub miasta..." aria-label="Szukaj ofert">
+          <select id="category" aria-label="Kategoria">
+            <option value="">Wszystkie kategorie</option>
+          </select>
+          <select id="city" aria-label="Miasto">
+            <option value="">Wszystkie miasta</option>
+          </select>
+          <button type="button" id="reset" class="btn btn--ghost">Wyczyść</button>
+        </div>
+
+        <p class="count" id="count"></p>
+        <div class="jobs" id="jobs"></div>
+        <p class="empty" id="empty" hidden>Brak ofert spełniających kryteria. Spróbuj zmienić filtry.</p>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="jak-to-dziala">
+      <div class="container">
+        <h2>Jak to działa?</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step__num">1</span>
+            <h3>Wybierz ofertę</h3>
+            <p>Użyj wyszukiwarki i filtrów, żeby szybko znaleźć coś dla siebie.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">2</span>
+            <h3>Wypełnij formularz</h3>
+            <p>Podaj imię, nazwisko, adres e-mail i napisz kilka słów o sobie.</p>
+          </div>
+          <div class="step">
+            <span class="step__num">3</span>
+            <h3>Poczekaj na odpowiedź</h3>
+            <p>Potwierdzenie przyjdzie na Twój e-mail, a odpowiedź w ciągu kilku dni.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="kontakt">
+    <div class="container footer__inner">
+      <div>
+        <strong>PracaTeraz</strong>
+        <p>Projekt by Vadym Kolbiniev</p>
+      </div>
+      <div>
+        <strong>Kontakt</strong>
+        <p>kontakt@pracakolbiniev.pl</p>
+      </div>
+      <div>
+        <strong>&copy; <span id="year"></span> PracaTeraz</strong>
+        <p>Wszelkie prawa zastrzeżone.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Formularz zgłoszenia -->
+  <dialog id="modal" class="modal">
+    <form id="form" class="form" novalidate>
+      <button type="button" class="modal__close" id="close" aria-label="Zamknij">&times;</button>
+      <h3>Zgłoszenie na stanowisko</h3>
+      <p class="form__job" id="form-job"></p>
+
+      <div class="row">
+        <label>Imię
+          <input type="text" name="firstName" required maxlength="60" autocomplete="given-name">
+        </label>
+        <label>Nazwisko
+          <input type="text" name="lastName" required maxlength="60" autocomplete="family-name">
+        </label>
+      </div>
+
+      <label>Adres e-mail
+        <input type="email" name="email" required maxlength="120" autocomplete="email">
+      </label>
+
+      <label>O sobie
+        <textarea name="about" rows="5" required minlength="10" maxlength="1500" placeholder="Napisz kilka zdań o swoim doświadczeniu i dlaczego chcesz u nas pracować..."></textarea>
+      </label>
+
+      <!-- pułapka na boty -->
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <p class="form__msg" id="form-msg" role="status"></p>
+
+      <button type="submit" class="btn" id="submit">Wyślij zgłoszenie</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
